@@ -1,0 +1,11 @@
+Total area: 21.57258 mm2
+Internal Power, Switching Power, Leakage Power, Total Power
+0.6070 mW, 1.3291e-04 mW, 2.6257e+05 nW, 0.8697 mW
+Timing is met, you can decrease time by 1.7669ms
+
+
+Number of DFFNRX1 gates instantiated: 5
+Number of NAND2X1 gates instantiated: 18
+Number of INVX1 gates instantiated: 7
+Number of NOR2X1 gates instantiated: 3
+Number of AND2X1 gates instantiated: 1

@@ -1,0 +1,54 @@
+ 
+****************************************
+Report : power
+        -analysis_effort low
+Design : top
+Version: T-2022.03-SP5
+Date   : Thu Aug  8 17:22:28 2024
+****************************************
+
+
+Library(s) Used:
+
+    PPDK_Standard_Library_0.6V_25C_TYP_X1 (File: /home/saggue00/synLibs/egfet_0.6V/db/EGFET_0.6V.db)
+
+
+Operating Conditions: TT   Library: PPDK_Standard_Library_0.6V_25C_TYP_X1
+Wire Load Model Mode: top
+
+
+Global Operating Voltage = 0.6  
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000pf
+    Time Units = 1ns
+    Dynamic Power Units = 1mW    (derived from V,C,T units)
+    Leakage Power Units = 1nW
+
+
+Attributes
+----------
+i - Including register clock pin internal power
+
+
+  Cell Internal Power  = 606.9998 uW  (100%)
+  Net Switching Power  = 132.9240 nW    (0%)
+                         ---------
+Total Dynamic Power    = 607.1328 uW  (100%)
+
+Cell Leakage Power     = 262.5739 uW
+
+
+                 Internal         Switching           Leakage            Total
+Power Group      Power            Power               Power              Power   (   %    )  Attrs
+--------------------------------------------------------------------------------------------------
+io_pad             0.0000            0.0000            0.0000            0.0000  (   0.00%)
+memory             0.0000            0.0000            0.0000            0.0000  (   0.00%)
+black_box          0.0000            0.0000            0.0000            0.0000  (   0.00%)
+clock_network      0.4718            0.0000            0.0000            0.4718  (  54.25%)  i
+register           0.1290        3.5726e-05        1.8385e+05            0.3129  (  35.98%)
+sequential         0.0000            0.0000            0.0000            0.0000  (   0.00%)
+combinational  6.1648e-03        9.7188e-05        7.8725e+04        8.4987e-02  (   9.77%)
+--------------------------------------------------------------------------------------------------
+Total              0.6070 mW     1.3291e-04 mW     2.6257e+05 nW         0.8697 mW
+1

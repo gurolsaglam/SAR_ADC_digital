@@ -1,0 +1,469 @@
+
+                           Design Compiler Graphical 
+                                 DC Ultra (TM)
+                                  DFTMAX (TM)
+                              Power Compiler (TM)
+                                 DesignWare (R)
+                                 DC Expert (TM)
+                               Design Vision (TM)
+                               HDL Compiler (TM)
+                               VHDL Compiler (TM)
+                                  DFT Compiler
+                               Design Compiler(R)
+
+               Version T-2022.03-SP5 for linux64 - Oct 11, 2022 
+
+                    Copyright (c) 1988 - 2022 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+   or distribution of this software is strictly prohibited.  Licensed Products
+     communicate with Synopsys servers for the purpose of providing software
+    updates, detecting software piracy and verifying that customers are using
+    Licensed Products in conformity with the applicable License Key for such
+  Licensed Products. Synopsys will use information gathered in connection with
+    this process to deliver software updates and pursue software pirates and
+                                   infringers.
+
+ Inclusivity & Diversity - Visit SolvNetPlus to read the "Synopsys Statement on
+            Inclusivity and Diversity" (Refer to article 000036315 at
+                        https://solvnetplus.synopsys.com)
+Initializing...
+Initializing gui preferences from file  /home/saggue00/.synopsys_dc_gui/preferences.tcl
+#setup libs
+set dcpath $::env(SNPS_SYN)
+/Software/synopsys/2022/syn/T-2022.03-SP5
+if {[string index $dcpath end] != "/"} {
+	set DC_LIB_PATH ${dcpath}/libraries/syn/
+} else {
+	set DC_LIB_PATH ${dcpath}libraries/syn/
+}
+/Software/synopsys/2022/syn/T-2022.03-SP5/libraries/syn/
+set LIB_DB_PATH $::env(ENV_LIBRARY_PATH)
+/home/saggue00/synLibs/egfet_0.6V/db
+if {[string index $LIB_DB_PATH end] != "/"} { set LIB_DB_PATH "${LIB_DB_PATH}/" }
+/home/saggue00/synLibs/egfet_0.6V/db/
+#Gurol added below live and edited some lines below
+set ENV_PROJECT_PATH $::env(ENV_PROJECT_PATH)
+/home/saggue00/Desktop/sar_adc/./4bit/
+set LIB_DB_NAME $::env(ENV_LIBRARY_DB)
+EGFET_0.6V.db
+set LIB_SDB_NAME " "
+ 
+set search_path [list ${LIB_DB_PATH} ${DC_LIB_PATH} ${ENV_PROJECT_PATH}/hdl/ ]
+/home/saggue00/synLibs/egfet_0.6V/db/ /Software/synopsys/2022/syn/T-2022.03-SP5/libraries/syn/ /home/saggue00/Desktop/sar_adc/./4bit//hdl/
+set target_library [list ${LIB_DB_NAME}]
+EGFET_0.6V.db
+set synthetic_library {dw_foundation.sldb}
+dw_foundation.sldb
+set link_library [list ${LIB_DB_NAME} ${synthetic_library}]
+EGFET_0.6V.db dw_foundation.sldb
+set symbol_library [list ${LIB_SDB_NAME}]
+{ }
+#read files
+set verilog_files $::env(ENV_VERILOG_FILES)
+/home/saggue00/Desktop/sar_adc/./4bit//hdl/top.v 
+set top_design $::env(ENV_TOP_DESIGN)
+top
+analyze -f verilog $verilog_files
+Running PRESTO HDLC
+Compiling source file /home/saggue00/Desktop/sar_adc/./4bit//hdl/top.v
+Presto compilation completed successfully.
+Loading db file '/home/saggue00/synLibs/egfet_0.6V/db/EGFET_0.6V.db'
+Loading db file '/Software/synopsys/2022/syn/T-2022.03-SP5/libraries/syn/dw_foundation.sldb'
+1
+elaborate $top_design
+Loading db file '/Software/synopsys/2022/syn/T-2022.03-SP5/libraries/syn/gtech.db'
+Loading db file '/Software/synopsys/2022/syn/T-2022.03-SP5/libraries/syn/standard.sldb'
+  Loading link library 'PPDK_Standard_Library_0.6V_25C_TYP_X1'
+  Loading link library 'gtech'
+Running PRESTO HDLC
+
+Statistics for case statements in always block at line 79 in file
+	'/home/saggue00/Desktop/sar_adc/./4bit//hdl/top.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            85            |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine top line 57 in file
+		'/home/saggue00/Desktop/sar_adc/./4bit//hdl/top.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      out0_reg       | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+|      done_reg       | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+|      out3_reg       | Flip-flop |   1   |  N  | N  | N  | Y  | N  | N  | N  |
+|      out2_reg       | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+|      out1_reg       | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (top)
+Elaborated 1 design.
+Current design is now 'top'.
+1
+current_design $top_design
+Current design is 'top'.
+{top}
+link
+
+  Linking design 'top'
+  Using the following designs and libraries:
+  --------------------------------------------------------------------------
+  PPDK_Standard_Library_0.6V_25C_TYP_X1 (library) /home/saggue00/synLibs/egfet_0.6V/db/EGFET_0.6V.db
+  dw_foundation.sldb (library) /Software/synopsys/2022/syn/T-2022.03-SP5/libraries/syn/dw_foundation.sldb
+
+1
+set auto_wire_load_selection true
+true
+set_max_area 0
+1
+#sdc
+source ./scripts/sdc.tcl
+1
+source ./scripts/units.tcl
+#compile option
+compile_ultra
+Information: Performing power optimization. (PWR-850)
+Alib files are up-to-date.
+Information: Evaluating DesignWare library utilization. (UISN-27)
+
+============================================================================
+| DesignWare Building Block Library  |         Version         | Available |
+============================================================================
+| Basic DW Building Blocks           | T-2022.03-DWBB_202203.4 |     *     |
+| Licensed DW Building Blocks        | T-2022.03-DWBB_202203.4 |     *     |
+============================================================================
+
+====================================================================================================
+| Flow Information                                                                                 |
+----------------------------------------------------------------------------------------------------
+| Flow         | Design Compiler WLM                                                               |
+| Comand Line  | compile_ultra                                                                     |
+====================================================================================================
+| Design Information                                      | Value                                  |
+====================================================================================================
+| Number of Scenarios                                     | 0                                      |
+| Leaf Cell Count                                         | 150                                    |
+| Number of User Hierarchies                              | 0                                      |
+| Sequential Cell Count                                   | 5                                      |
+| Macro Count                                             | 0                                      |
+| Number of Power Domains                                 | 0                                      |
+| Number of Path Groups                                   | 2                                      |
+| Number of VT Class                                      | 0                                      |
+| Number of Clocks                                        | 1                                      |
+| Number of Dont Touch Cells                              | 32                                     |
+| Number of Dont Touch Nets                               | 0                                      |
+| Number of Size Only Cells                               | 0                                      |
+| Design with UPF Data                                    | false                                  |
+====================================================================================================
+Information: Sequential output inversion is enabled.  SVF file must be used for formal verification. (OPT-1208)
+  Simplifying Design 'top'
+
+Loaded alib file './alib-52/EGFET_0.6V.db.alib'
+  Building model 'DW01_NAND2'
+Information: Ungrouping 0 of 1 hierarchies before Pass 1 (OPT-775)
+Information: State dependent leakage is now switched from on to off.
+
+  Beginning Pass 1 Mapping
+  ------------------------
+  Processing 'top'
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+Information: Timing loop detected. (OPT-150)
+	out3_reg/Q out3_reg/Q_bar 
+Information: Timing loop detected. (OPT-150)
+	out3_reg/Q out3_reg/Q_bar 
+Warning: Disabling timing arc between pins 'Q_bar' and 'Q' on cell 'out3_reg'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q_bar' and 'Q' on cell 'out3_reg'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q_bar' and 'Q' on cell 'out3_reg'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'Q_bar' on cell 'out2_reg'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'Q_bar' on cell 'out2_reg'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'Q_bar' on cell 'out1_reg'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'Q_bar' on cell 'out1_reg'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'Q_bar' on cell 'out0_reg'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'Q_bar' on cell 'out0_reg'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'Q_bar' on cell 'done_reg'
+         to break a timing loop. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'Q_bar' on cell 'done_reg'
+         to break a timing loop. (OPT-314)
+
+  Beginning Mapping Optimizations  (Ultra High effort)
+  -------------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:01 21386940.0 8233100.00 11448144.0      48.1                           248994.2188
+    0:00:01 21386940.0 8233100.00 11448144.0      48.1                           248994.2188
+
+  Beginning Constant Register Removal
+  -----------------------------------
+    0:00:01 21386940.0 8233100.00 11448144.0      48.1                           248994.2188
+    0:00:01 21386940.0 8233100.00 11448144.0      48.1                           248994.2188
+
+  Beginning Global Optimizations
+  ------------------------------
+No buffer cells compatible for Numerical Synthesis
+  Global Optimization (Phase 1)
+  Global Optimization (Phase 2)
+  Global Optimization (Phase 3)
+  Global Optimization (Phase 4)
+  Global Optimization (Phase 5)
+  Global Optimization (Phase 6)
+  Global Optimization (Phase 7)
+  Global Optimization (Phase 8)
+  Global Optimization (Phase 9)
+  Global Optimization (Phase 10)
+  Global Optimization (Phase 11)
+  Global Optimization (Phase 12)
+  Global Optimization (Phase 13)
+  Global Optimization (Phase 14)
+  Global Optimization (Phase 15)
+  Global Optimization (Phase 16)
+  Global Optimization (Phase 17)
+  Global Optimization (Phase 18)
+  Global Optimization (Phase 19)
+  Global Optimization (Phase 20)
+  Global Optimization (Phase 21)
+  Global Optimization (Phase 22)
+  Global Optimization (Phase 23)
+  Global Optimization (Phase 24)
+  Global Optimization (Phase 25)
+  Global Optimization (Phase 26)
+  Global Optimization (Phase 27)
+  Global Optimization (Phase 28)
+
+  Beginning Isolate Ports
+  -----------------------
+
+  Beginning Delay Optimization
+  ----------------------------
+    0:00:01 21386940.0 8233100.00 11448144.0      48.1                           248994.2188
+    0:00:01 21386940.0 8233100.00 11448144.0      48.1                           248994.2188
+    0:00:01 21386940.0 8233100.00 11448144.0      48.1                           248994.2188
+    0:00:01 21386940.0 8233100.00 11448144.0      48.1                           248994.2188
+    0:00:01 21386940.0 8233100.00 11448144.0      48.1                           248994.2188
+    0:00:01 21386940.0 8233100.00 11448144.0      48.1                           248994.2188
+
+  Beginning WLM Backend Optimization
+  --------------------------------------
+    0:00:01 21386940.0 8233100.00 11448144.0      48.1                           248994.2188
+    0:00:01 21386940.0 8233100.00 11448144.0      48.1                           248994.2188
+    0:00:01 21386940.0 8233100.00 11448144.0      48.1                           248994.2188
+***
+*** WARNING: Characterizing failed for lib_cell family '23'
+***
+  Cells of this type cannot be sized in Linear.
+  Cells include:
+	DFFNRX1 (5 instances)
+    Arc from 'CP' to 'Q' of sense 'rising_edge'
+    Arc from 'CP' to 'Q_bar' of sense 'rising_edge'
+    Arc from 'RST_N' to 'Q' of sense 'clear_unate' (5)
+    Arc from 'RST_N' to 'Q_bar' of sense 'preset_inverting' (5)
+    Arc from 'Q' to 'Q_bar' of sense 'negative_unate'
+    Arc from 'Q' to 'Q_bar' of sense 'fall_to_rise'
+    Arc from 'Q_bar' to 'Q' of sense 'negative_unate'
+    Arc from 'Q_bar' to 'Q' of sense 'fall_to_rise' (2)
+    0:00:01 21386940.0 8233100.00 11448144.0      48.1                           248994.2188
+    0:00:01 21386940.0 8233100.00 11448144.0      48.1                           248994.2188
+    0:00:01 21386940.0 8233100.00 11448144.0      48.1                           248994.2188
+    0:00:01 21386940.0 8233100.00 11448144.0      48.1                           248994.2188
+    0:00:01 21386940.0 8233100.00 11448144.0      48.1                           248994.2188
+    0:00:01 21386940.0 8233100.00 11448144.0      48.1                           248994.2188
+    0:00:01 21386940.0 8233100.00 11448144.0      48.1                           248994.2188
+    0:00:01 21386940.0 8233100.00 11448144.0      48.1                           248994.2188
+    0:00:01 21386940.0 8233100.00 11448144.0      48.1                           248994.2188
+    0:00:01 21386940.0 8233100.00 11448144.0      48.1                           248994.2188
+    0:00:01 21386940.0 8233100.00 11448144.0      48.1                           248994.2188
+    0:00:01 21386940.0 8233100.00 11448144.0      48.1                           248994.2188
+    0:00:01 21386940.0 8233100.00 11448144.0      48.1                           248994.2188
+    0:00:01 21386940.0 8233100.00 11448144.0      48.1                           248994.2188
+    0:00:01 21386940.0 8233100.00 11448144.0      48.1                           248994.2188
+    0:00:01 21386940.0 8233100.00 11448144.0      48.1                           248994.2188
+    0:00:01 21386940.0 8233100.00 11448144.0      48.1                           248994.2188
+    0:00:01 21386940.0 8233100.00 11448144.0      48.1                           248994.2188
+    0:00:01 21386940.0 8233100.00 11448144.0      48.1                           248994.2188
+
+
+  Beginning Design Rule Fixing  (max_transition)
+  ----------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:01 21386940.0 8233100.00 11448144.0      48.1                           248994.2188
+  Global Optimization (Phase 29)
+  Global Optimization (Phase 30)
+  Global Optimization (Phase 31)
+    0:00:01 21572580.0 8233100.00 11448144.0      47.1                           253822.6562
+    0:00:01 21572580.0 8233100.00 11448144.0      47.1                           253822.6562
+
+
+  Beginning Leakage Power Optimization  (max_leakage_power 0)
+  ------------------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:01 21572580.0 8233100.00 11448144.0      47.1                           253822.6562
+  Global Optimization (Phase 32)
+  Global Optimization (Phase 33)
+  Global Optimization (Phase 34)
+  Global Optimization (Phase 35)
+  Global Optimization (Phase 36)
+  Global Optimization (Phase 37)
+  Global Optimization (Phase 38)
+  Global Optimization (Phase 39)
+  Global Optimization (Phase 40)
+  Global Optimization (Phase 41)
+    0:00:01 21572580.0 8233100.00 11448144.0      47.1                           253822.6562
+    0:00:01 21572580.0 8233100.00 11448144.0      47.1                           253822.6562
+    0:00:01 21572580.0 8233100.00 11448144.0      47.1                           253822.6562
+***
+*** WARNING: Characterizing failed for lib_cell family '23'
+***
+  Cells of this type cannot be sized in Linear.
+  Cells include:
+	DFFNRX1 (5 instances)
+    Arc from 'CP' to 'Q' of sense 'rising_edge'
+    Arc from 'CP' to 'Q_bar' of sense 'rising_edge'
+    Arc from 'RST_N' to 'Q' of sense 'clear_unate' (5)
+    Arc from 'RST_N' to 'Q_bar' of sense 'preset_inverting' (5)
+    Arc from 'Q' to 'Q_bar' of sense 'negative_unate'
+    Arc from 'Q' to 'Q_bar' of sense 'fall_to_rise'
+    Arc from 'Q_bar' to 'Q' of sense 'negative_unate'
+    Arc from 'Q_bar' to 'Q' of sense 'fall_to_rise' (2)
+    0:00:01 21572580.0 8233100.00 11448144.0      47.1                           253822.6562
+    0:00:01 21572580.0 8233100.00 11448144.0      47.1                           253822.6562
+    0:00:01 21572580.0 8233100.00 11448144.0      47.1                           253822.6562
+    0:00:01 21572580.0 8233100.00 11448144.0      47.1                           253822.6562
+    0:00:01 21572580.0 8233100.00 11448144.0      47.1                           253822.6562
+    0:00:01 21572580.0 8233100.00 11448144.0      47.1                           253822.6562
+    0:00:01 21572580.0 8233100.00 11448144.0      47.1                           253822.6562
+    0:00:01 21572580.0 8233100.00 11448144.0      47.1                           253822.6562
+    0:00:01 21572580.0 8233100.00 11448144.0      47.1                           253822.6562
+    0:00:01 21572580.0 8233100.00 11448144.0      47.1                           253822.6562
+    0:00:01 21572580.0 8233100.00 11448144.0      47.1                           253822.6562
+    0:00:01 21572580.0 8233100.00 11448144.0      47.1                           253822.6562
+    0:00:01 21572580.0 8233100.00 11448144.0      47.1                           253822.6562
+    0:00:01 21572580.0 8233100.00 11448144.0      47.1                           253822.6562
+    0:00:01 21572580.0 8233100.00 11448144.0      47.1                           253822.6562
+    0:00:01 21572580.0 8233100.00 11448144.0      47.1                           253822.6562
+    0:00:01 21572580.0 8233100.00 11448144.0      47.1                           253822.6562
+    0:00:01 21572580.0 8233100.00 11448144.0      47.1                           253822.6562
+    0:00:01 21572580.0 8233100.00 11448144.0      47.1                           253822.6562
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:01 21572580.0 8233100.00 11448144.0      47.1                           253822.6562
+***
+*** WARNING: Characterizing failed for lib_cell family '23'
+***
+  Cells of this type cannot be sized in Linear.
+  Cells include:
+	DFFNRX1 (5 instances)
+    Arc from 'CP' to 'Q' of sense 'rising_edge'
+    Arc from 'CP' to 'Q_bar' of sense 'rising_edge'
+    Arc from 'RST_N' to 'Q' of sense 'clear_unate' (5)
+    Arc from 'RST_N' to 'Q_bar' of sense 'preset_inverting' (5)
+    Arc from 'Q' to 'Q_bar' of sense 'negative_unate'
+    Arc from 'Q' to 'Q_bar' of sense 'fall_to_rise'
+    Arc from 'Q_bar' to 'Q' of sense 'negative_unate'
+    Arc from 'Q_bar' to 'Q' of sense 'fall_to_rise' (2)
+    0:00:01 21572580.0 8233100.00 11448144.0      47.1                           253822.6562
+    0:00:01 21572580.0 8233100.00 11448144.0      47.1                           253822.6562
+    0:00:01 21572580.0 8233100.00 11448144.0      47.1                           253822.6562
+***
+*** WARNING: Characterizing failed for lib_cell family '23'
+***
+  Cells of this type cannot be sized in Linear.
+  Cells include:
+	DFFNRX1 (5 instances)
+    Arc from 'CP' to 'Q' of sense 'rising_edge'
+    Arc from 'CP' to 'Q_bar' of sense 'rising_edge'
+    Arc from 'RST_N' to 'Q' of sense 'clear_unate' (5)
+    Arc from 'RST_N' to 'Q_bar' of sense 'preset_inverting' (5)
+    Arc from 'Q' to 'Q_bar' of sense 'negative_unate'
+    Arc from 'Q' to 'Q_bar' of sense 'fall_to_rise'
+    Arc from 'Q_bar' to 'Q' of sense 'negative_unate'
+    Arc from 'Q_bar' to 'Q' of sense 'fall_to_rise' (2)
+    0:00:01 21572580.0 8233100.00 11448144.0      47.1                           253822.6562
+    0:00:02 21572580.0 8233100.00 11448144.0      47.1                           253822.6562
+    0:00:02 21572580.0 8233100.00 11448144.0      47.1                           253822.6562
+    0:00:02 21572580.0 8233100.00 11448144.0      47.1                           253822.6562
+    0:00:02 21572580.0 8233100.00 11448144.0      47.1                           253822.6562
+    0:00:02 21572580.0 8233100.00 11448144.0      47.1                           253822.6562
+    0:00:02 21572580.0 8233100.00 11448144.0      47.1                           253822.6562
+Loading db file '/home/saggue00/synLibs/egfet_0.6V/db/EGFET_0.6V.db'
+Warning: Disabling timing arc between pins 'Q' and 'Q_bar' on cell 'LATCHX1'
+         to break a loop detected in this library cell. (OPT-314)
+Warning: Disabling timing arc between pins 'Q_bar' and 'Q' on cell 'LATCHX1'
+         to break a loop detected in this library cell. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'Q_bar' on cell 'DFFX1'
+         to break a loop detected in this library cell. (OPT-314)
+Warning: Disabling timing arc between pins 'Q_bar' and 'Q' on cell 'DFFX1'
+         to break a loop detected in this library cell. (OPT-314)
+Warning: Disabling timing arc between pins 'Q' and 'Q_bar' on cell 'DFFNRX1'
+         to break a loop detected in this library cell. (OPT-314)
+Warning: Disabling timing arc between pins 'Q_bar' and 'Q' on cell 'DFFNRX1'
+         to break a loop detected in this library cell. (OPT-314)
+
+
+Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
+
+
+  Optimization Complete
+  ---------------------
+Information: State dependent leakage is now switched from off to on.
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+1
+#compile_ultra -no_autoungroup
+#reports
+set clk_period $::env(ENV_CLK_PERIOD)
+20000000.0
+report_qor > ${ENV_PROJECT_PATH}/reports/${top_design}_${clk_period}${tunit}.qor.rpt
+report_area > ${ENV_PROJECT_PATH}/reports/${top_design}_${clk_period}${tunit}.area.rpt
+report_area -hierarchy > ${ENV_PROJECT_PATH}/reports/${top_design}_${clk_period}${tunit}.hierarchy.area.rpt
+report_timing > ${ENV_PROJECT_PATH}/reports/${top_design}_${clk_period}${tunit}.timing.rpt 
+report_power -analysis_effort low > ${ENV_PROJECT_PATH}/reports/${top_design}_${clk_period}${tunit}.power.rpt 
+#write files
+change_names -h -rules verilog
+1
+write -h -f ddc -output ${ENV_PROJECT_PATH}/gate/${top_design}.ddc
+Writing ddc file '/home/saggue00/Desktop/sar_adc/./4bit//gate/top.ddc'.
+1
+write -h -f verilog -output ${ENV_PROJECT_PATH}/gate/${top_design}.sv
+Writing verilog file '/home/saggue00/Desktop/sar_adc/4bit/gate/top.sv'.
+1
+write_sdc ${ENV_PROJECT_PATH}/gate/${top_design}.sdc
+1
+write_sdf ${ENV_PROJECT_PATH}/gate/${top_design}.sdf
+Information: Annotated 'cell' delays are assumed to include load delay. (UID-282)
+Information: Writing timing information to file '/home/saggue00/Desktop/sar_adc/4bit/gate/top.sdf'. (WT-3)
+1
+#exit
+quit
+
+Memory usage for this session 113 Mbytes.
+Memory usage for this session including child processes 113 Mbytes.
+CPU usage for this session 4 seconds ( 0.00 hours ).
+Elapsed time for this session 5 seconds ( 0.00 hours ).
+
+Thank you...
